@@ -1,0 +1,69 @@
+version: "3.9"
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: mds_app
+    restart: unless-stopped
+    ports:
+      - "8000:8000"
+    environment:
+      DB_HOST: mysql
+      DB_PORT: 3306
+      DB_DATABASE: ${DB_DATABASE}
+      DB_USERNAME: ${DB_USERNAME}
+      DB_PASSWORD: ${DB_PASSWORD}
+    volumes:
+      - .:/var/www/html
+    depends_on:
+      - mysql
+    networks:
+      - mds_network
+
+  mysql:
+    image: mysql:8.0
+    container_name: mds_mysql
+    restart: unless-stopped
+    command: --default-authentication-plugin=mysql_native_password
+    environment:
+      MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD}
+      MYSQL_DATABASE: ${DB_DATABASE}
+      MYSQL_USER: ${DB_USERNAME}
+      MYSQL_PASSWORD: ${DB_PASSWORD}
+    ports:
+      - "3307:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+    networks:
+      - mds_network
+    security_opt:
+      - seccomp:unconfined
+    cap_add:
+      - SYS_NICE
+      - DAC_OVERRIDE
+      - SETGID
+      - SETUID
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: mds_phpmyadmin
+    restart: unless-stopped
+    environment:
+      PMA_HOST: mysql
+      PMA_USER: ${DB_USERNAME}
+      PMA_PASSWORD: ${DB_PASSWORD}
+    ports:
+      - "8080:80"
+    networks:
+      - mds_network
+    depends_on:
+      - mysql
+
+networks:
+  mds_network:
+    driver: bridge
+
+volumes:
+  mysql_data:
