@@ -1,11 +1,35 @@
 FROM php:8.3-fpm
 
-# dependencias del sistema
+# Instalar dependencias del sistema
 RUN apt-get update && apt-get install -y \
-    git unzip zip libpng-dev libonig-dev libxml2-dev && \
-    docker-php-ext-install pdo_mysql mbstring exif pcntl bcmath gd
+    git \
+    unzip \
+    zip \
+    curl \
+    libpng-dev \
+    libonig-dev \
+    libxml2-dev
 
-# instalar composer
-COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
+# Instalar extensiones de PHP necesarias para Laravel
+RUN docker-php-ext-install pdo pdo_mysql mbstring bcmath gd
 
+# Instalar Composer
+COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
+
+# Directorio de trabajo
 WORKDIR /var/www/html
+
+# Copiar todos los archivos del proyecto
+COPY . .
+
+# Dar permisos necesarios
+# RUN chmod -R 775 storage bootstrap/cache
+
+# Instalar dependencias de Laravel (SIN SCRIPTS POST)
+RUN composer install --no-interaction --no-plugins --no-scripts
+
+# Exponer puerto
+EXPOSE 8000
+
+# Comando final: levantar Laravel
+CMD ["php", "artisan", "serve", "--host=0.0.0.0", "--port=8000"]

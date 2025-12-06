@@ -16,7 +16,7 @@ services:
       DB_USERNAME: ${DB_USERNAME}
       DB_PASSWORD: ${DB_PASSWORD}
     volumes:
-      - .:/var/www/html
+      - ./:/var/www/html
     depends_on:
       - mysql
     networks:
