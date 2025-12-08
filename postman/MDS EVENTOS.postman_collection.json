@@ -1,0 +1,331 @@
+{
+	"info": {
+		"_postman_id": "e9c500e4-287a-44bf-969f-6a57eab3d02e",
+		"name": "MDS EVENTOS",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "13135673"
+	},
+	"item": [
+		{
+			"name": "Registrarse",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Admin\",\r\n    \"email\": \"admin2@mds.com\",\r\n    \"password\": \"password\",\r\n    \"password_confirmation\": \"password\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8000/api/auth/register-checker",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"auth",
+						"register-checker"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "// {\r\n//   \"email\": \"checker@mds.com\",\r\n//   \"password\": \"password\"\r\n// }\r\n{\r\n  \"email\": \"admin@mds.com\",\r\n  \"password\": \"password\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8000/api/auth/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"auth",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Logout",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIwMTlhZmVlMy1mZmU1LTczMjUtYmM0My02ZGEzY2JkNDc4ZTYiLCJqdGkiOiJjNTUyZGM1MjRhNmFlZTExMjU3MTM2NmMyYmY0YzVhY2JlYzU0ZWJlNWJhNGRjMWU2ZTkyYWU2ZjYyNDVkZjM3ZjZiMDQzZWRiZTU5NmZjOCIsImlhdCI6MTc2NTIxMjk5Mi42MzkxNjUsIm5iZiI6MTc2NTIxMjk5Mi42MzkxNjcsImV4cCI6MTc5Njc0ODk5Mi42MTM2OTIsInN1YiI6IjIiLCJzY29wZXMiOltdfQ.Rtv8qrUFDJntjNVIpMRjntTng7BGlJsl5pkHE5LSXj7O7ik3bOC0sMwQGaIrMLfHjZ34LxLwPxo4SAMr-mCIVa8a_3Zkz4-Yj0cDMZiNpkQnOhAxRA_nWl7O2icRph4oks7PtBgY1PRDayO5qB-YNexIwh8nno-dgBZFtBpmafWvkLj-PypoTVKUPkgLp7m8WO9a1Qkq63YO-onUQOH_1V3dUNrMhghMMImWW_iOGLXCZwx35SzIPufZmFsSLTeoBYom_Aabb51gpFzQ5UgO9QWegtb69OUPlJJCgwKptda431uJqz9fO5LKmdWsuU2XqZ1A7R4EfWrHmPaeVFXtGOufIHF6ny-ANP0K6mBmL59R4ZJHA7gyfaa7ISvHyHsY8hkmestRhqbwlaooL1xhxmCv888jHWQtFkpW5GV7snzDetD1dlVOfyJMs5J0IR3iw0_G8CnKygOX0Czow6uJZPuWt0RX0radHtf9vplOWiEBz72ieXd7XuCRfweOVU6aVcyE_vcXPgvhBnqun6RspoEGJACbej1cbLxLfskXj63K_AWsHTb1SPXwdNuDFZRHJ0hZZLJxThi9UxblMGg4sgwFIn_6rO4eeSlL8KsCSPSyQ97x4XQvvpcgbbrxXoUvyPMgFd_iXTpdnQPhBtAKFGAYU8O9cbJBRiIxIiiNXv0",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8000/api/auth/logout",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"auth",
+						"logout"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Role Checker",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIwMTlhZmVlMy1mZmU1LTczMjUtYmM0My02ZGEzY2JkNDc4ZTYiLCJqdGkiOiJjNTUyZGM1MjRhNmFlZTExMjU3MTM2NmMyYmY0YzVhY2JlYzU0ZWJlNWJhNGRjMWU2ZTkyYWU2ZjYyNDVkZjM3ZjZiMDQzZWRiZTU5NmZjOCIsImlhdCI6MTc2NTIxMjk5Mi42MzkxNjUsIm5iZiI6MTc2NTIxMjk5Mi42MzkxNjcsImV4cCI6MTc5Njc0ODk5Mi42MTM2OTIsInN1YiI6IjIiLCJzY29wZXMiOltdfQ.Rtv8qrUFDJntjNVIpMRjntTng7BGlJsl5pkHE5LSXj7O7ik3bOC0sMwQGaIrMLfHjZ34LxLwPxo4SAMr-mCIVa8a_3Zkz4-Yj0cDMZiNpkQnOhAxRA_nWl7O2icRph4oks7PtBgY1PRDayO5qB-YNexIwh8nno-dgBZFtBpmafWvkLj-PypoTVKUPkgLp7m8WO9a1Qkq63YO-onUQOH_1V3dUNrMhghMMImWW_iOGLXCZwx35SzIPufZmFsSLTeoBYom_Aabb51gpFzQ5UgO9QWegtb69OUPlJJCgwKptda431uJqz9fO5LKmdWsuU2XqZ1A7R4EfWrHmPaeVFXtGOufIHF6ny-ANP0K6mBmL59R4ZJHA7gyfaa7ISvHyHsY8hkmestRhqbwlaooL1xhxmCv888jHWQtFkpW5GV7snzDetD1dlVOfyJMs5J0IR3iw0_G8CnKygOX0Czow6uJZPuWt0RX0radHtf9vplOWiEBz72ieXd7XuCRfweOVU6aVcyE_vcXPgvhBnqun6RspoEGJACbej1cbLxLfskXj63K_AWsHTb1SPXwdNuDFZRHJ0hZZLJxThi9UxblMGg4sgwFIn_6rO4eeSlL8KsCSPSyQ97x4XQvvpcgbbrxXoUvyPMgFd_iXTpdnQPhBtAKFGAYU8O9cbJBRiIxIiiNXv0",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8000/api/checker/test",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"checker",
+						"test"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Role Admin",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIwMTlhZjY5Yy1mNzE1LTcyNjMtOTUzNy04MzgzYzBkOGZkNTAiLCJqdGkiOiI2NGVhYjg3ZWQ2NzE2NDE3ZTEyMTFmZGQ4ZGEzZmFkNjc3MmJjYjdiMjA2ZDBiYzM3MjU4MzUzN2FjZTM2ODFiZWM2NTA3YzI0MTg3MTE5MyIsImlhdCI6MTc2NTA3NjE1NC44MTAzMSwibmJmIjoxNzY1MDc2MTU0LjgxMDMxMiwiZXhwIjoxNzk2NjEyMTU0Ljc5NTQ5OSwic3ViIjoiMSIsInNjb3BlcyI6W119.nYPlzTZ51UNVmfvS54iV_TJzzmK9nlEnlGkjHUt9Sq1uCvCJNUBG0iPzbW2b4zyw0dV0tfvOjuUeNqLUvc8PiBtOYHle_CFfoG8fvR9ZWoGFVb2vOVVqqtDo1Fv-cRjg6uXuPjkrwPQLF83focSIp6XmGbWW-6gFApOPCLJY2C1O-kWjWi-ozOFiIwo9L2LuKvnxYMN7ZE0moFL6ps8Q_Rls3LcKdvJHxKDBTHEEdwQXOzudxiGmbnqPzFjG5SUSTztC3Bt5uCo3mdCkq9oiymVDgwIR2oa7pWdLYDqwaQWSA9Lr3L6irxN5huivv7lGiA-XedCoxR04jBPrGzFMJWVPdDyQiOvanMcvYC1e7gXi_pothQ6lUN6P6tQA8VqNRsQ_78Fugaeob0KBlqW978WDxkCLMegPaj7ZgcVULsqqCcqqGSWR4or2cTbIAU2-PEusiea6amU4lNWR7aLMG6mmtlkjkKar1QJGrL3zrLKCQtlAq7SORyclA4ePdWzCYMF9g5HbJhSDnbshrKaE98mj3Bxv1FO2SiUegfeA2NwG8b2JlQs0Wqn2RAUviMlz6nl01dZNStXrSPs7vIMnPzo68r6GeS1n7eAz4Wwnu2kVkKhwsFByNCfKSZeYOsfHTKkFh_9pHsuCymBBX5BxnOmFwvbX52nQ64KgULYIK3Y",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8000/api/admin/test",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"admin",
+						"test"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Test Invitacion",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8000/api/invitations/123",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"invitations",
+						"123"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Invitaciones",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"hash\": \"c0h44g\"\r\n    // \"hash\": \"$H/DSV\"\r\n    // \"hash\": 5\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8000/api/redeem",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"redeem"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Validar Ticket",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIwMTlhZjY5Yy1mNzE1LTcyNjMtOTUzNy04MzgzYzBkOGZkNTAiLCJqdGkiOiI2NWU0Njg3YjY1MDQwNjVhNzFiOGVhNTM4MjU0ODBmMjQxY2EzM2ZlMzk3ZDc5ZWIxZjZiYzUzZjFhMjVlZmM2MWM0NmJlNTIzNDQxNDE2MyIsImlhdCI6MTc2NTA3NDg2MC4zNzg5LCJuYmYiOjE3NjUwNzQ4NjAuMzc4OTAyLCJleHAiOjE3OTY2MTA4NjAuMzU4MDQ5LCJzdWIiOiIxNCIsInNjb3BlcyI6W119.I_TPa2BfBztqyhkqdgID1m95dTvVwur3AJLNs0j1JN8Tqud1zm5_8PajvE3D-hvl9HNEVKdqkYq7WXofrFw7E01WPk2i2itD07qSCuoM8YpUJ02ozs4ieALPrtIq8ciurmpfA4K_1ElGVIbCP_TvXX19ICqHGo-m708YF3sfvZRgPZcI_SVfs92-QBzFnoaLdImqwb7VZqh9w-kXq8sYhzqDonlDkFntbEvRRF2wg_ng_uC_cIpjQmQCBXi8GWCKCjZeYQZdvh4qIF0vx2J2qvfKilxEspctvwEFnoWeptTvD91MZcocbYryxbPQ3NeYHXX2C7oRs87_4UFpwouPMg8LhCzuuSmCvXEmFjG7aQqqXIFaPEBVFZOE9d9HL41H1zC_h21Rcy00LISjRAeJ-6vSjvOMmKLKM4LLLq9TJI4UFjofeyQDKpq0J6Kd1a-KneRHHxrh7Le13VCfNRN2hGvaNcDU5m78q_LpYgqIR0Lhe44hK4XBSqnw3iMNplAS0Y1KkQKg0JHEg_g2He9-zTviQ0qgRi-TTO7e3zcP2j2pkl8X38FfEW6GkOTDCs1UVDYxJY1JFeyFW2QkX2OKj6UNztP0JWldU5_8Wsrq05En59mHmqVIqllkJBPtpkzjdIZh0J2y804TRWdJiiRkgrQvdicfHZRVMBZO20wUKrg",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8000/api/tickets/378501fb-da4d-49ea-8333-3e45b9b63c3e/validate",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"tickets",
+						"378501fb-da4d-49ea-8333-3e45b9b63c3e",
+						"validate"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Admin Event Paginate",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIwMTlhZjY5Yy1mNzE1LTcyNjMtOTUzNy04MzgzYzBkOGZkNTAiLCJqdGkiOiI2NGVhYjg3ZWQ2NzE2NDE3ZTEyMTFmZGQ4ZGEzZmFkNjc3MmJjYjdiMjA2ZDBiYzM3MjU4MzUzN2FjZTM2ODFiZWM2NTA3YzI0MTg3MTE5MyIsImlhdCI6MTc2NTA3NjE1NC44MTAzMSwibmJmIjoxNzY1MDc2MTU0LjgxMDMxMiwiZXhwIjoxNzk2NjEyMTU0Ljc5NTQ5OSwic3ViIjoiMSIsInNjb3BlcyI6W119.nYPlzTZ51UNVmfvS54iV_TJzzmK9nlEnlGkjHUt9Sq1uCvCJNUBG0iPzbW2b4zyw0dV0tfvOjuUeNqLUvc8PiBtOYHle_CFfoG8fvR9ZWoGFVb2vOVVqqtDo1Fv-cRjg6uXuPjkrwPQLF83focSIp6XmGbWW-6gFApOPCLJY2C1O-kWjWi-ozOFiIwo9L2LuKvnxYMN7ZE0moFL6ps8Q_Rls3LcKdvJHxKDBTHEEdwQXOzudxiGmbnqPzFjG5SUSTztC3Bt5uCo3mdCkq9oiymVDgwIR2oa7pWdLYDqwaQWSA9Lr3L6irxN5huivv7lGiA-XedCoxR04jBPrGzFMJWVPdDyQiOvanMcvYC1e7gXi_pothQ6lUN6P6tQA8VqNRsQ_78Fugaeob0KBlqW978WDxkCLMegPaj7ZgcVULsqqCcqqGSWR4or2cTbIAU2-PEusiea6amU4lNWR7aLMG6mmtlkjkKar1QJGrL3zrLKCQtlAq7SORyclA4ePdWzCYMF9g5HbJhSDnbshrKaE98mj3Bxv1FO2SiUegfeA2NwG8b2JlQs0Wqn2RAUviMlz6nl01dZNStXrSPs7vIMnPzo68r6GeS1n7eAz4Wwnu2kVkKhwsFByNCfKSZeYOsfHTKkFh_9pHsuCymBBX5BxnOmFwvbX52nQ64KgULYIK3Y",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"hash\": \"a8f22d\"\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8000/api/admin/events/2/tickets-used",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"admin",
+						"events",
+						"2",
+						"tickets-used"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Admin Redemptions Paginate",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIwMTlhZjY5Yy1mNzE1LTcyNjMtOTUzNy04MzgzYzBkOGZkNTAiLCJqdGkiOiI2NGVhYjg3ZWQ2NzE2NDE3ZTEyMTFmZGQ4ZGEzZmFkNjc3MmJjYjdiMjA2ZDBiYzM3MjU4MzUzN2FjZTM2ODFiZWM2NTA3YzI0MTg3MTE5MyIsImlhdCI6MTc2NTA3NjE1NC44MTAzMSwibmJmIjoxNzY1MDc2MTU0LjgxMDMxMiwiZXhwIjoxNzk2NjEyMTU0Ljc5NTQ5OSwic3ViIjoiMSIsInNjb3BlcyI6W119.nYPlzTZ51UNVmfvS54iV_TJzzmK9nlEnlGkjHUt9Sq1uCvCJNUBG0iPzbW2b4zyw0dV0tfvOjuUeNqLUvc8PiBtOYHle_CFfoG8fvR9ZWoGFVb2vOVVqqtDo1Fv-cRjg6uXuPjkrwPQLF83focSIp6XmGbWW-6gFApOPCLJY2C1O-kWjWi-ozOFiIwo9L2LuKvnxYMN7ZE0moFL6ps8Q_Rls3LcKdvJHxKDBTHEEdwQXOzudxiGmbnqPzFjG5SUSTztC3Bt5uCo3mdCkq9oiymVDgwIR2oa7pWdLYDqwaQWSA9Lr3L6irxN5huivv7lGiA-XedCoxR04jBPrGzFMJWVPdDyQiOvanMcvYC1e7gXi_pothQ6lUN6P6tQA8VqNRsQ_78Fugaeob0KBlqW978WDxkCLMegPaj7ZgcVULsqqCcqqGSWR4or2cTbIAU2-PEusiea6amU4lNWR7aLMG6mmtlkjkKar1QJGrL3zrLKCQtlAq7SORyclA4ePdWzCYMF9g5HbJhSDnbshrKaE98mj3Bxv1FO2SiUegfeA2NwG8b2JlQs0Wqn2RAUviMlz6nl01dZNStXrSPs7vIMnPzo68r6GeS1n7eAz4Wwnu2kVkKhwsFByNCfKSZeYOsfHTKkFh_9pHsuCymBBX5BxnOmFwvbX52nQ64KgULYIK3Y",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8000/api/admin/redemptions?event=2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"admin",
+						"redemptions"
+					],
+					"query": [
+						{
+							"key": "event",
+							"value": "2"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
