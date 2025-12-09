@@ -14,7 +14,6 @@ cd mds-eventos
 ## Copiar el archivo .env y poner sus variables correspondientes
 cp .env.example .env
 cp .env.testing.example .env.testing
-php artisan key:generate
 
 ## Modificar entornos
 ### Reemplazar en .env
