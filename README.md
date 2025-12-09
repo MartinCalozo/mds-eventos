@@ -119,8 +119,10 @@ Y hacer lo mismo "requiere Bearer SECRET" y poner value = "Bearer secret123"
 
 Para el "Validar Ticket" hay que buscar en la base de datos (http://localhost:8080/)
 usuario: mds_user
-password: pass
+contraseña: pass
 Ir a la base de datos mds-events, a la tabla tickets y copiar y pegar un "code", ese se pone en la url /api/tickets/{code}/validate
+
+En obtener invitacion se ponen al final de la url los hashes que me envíaron ustedes por ejemplo a8f22d, a8f22e, a8f22f, b9g33e, b9g33f, b9g33g
 
 ## Job
 Está corriendo contantemente en un contenedor de docker llamado mds_queue
@@ -130,6 +132,7 @@ docker exec -it mds_test bash
     php artisan test --coverage
     exit
 
+Las Instalaciones de XDebug están dentro del Dockerfile
 
 # Problemas
 Si tienen algún problema con passport por favor enviarme mail (martincalozo@gmail.com) o contactarse conmigo por otro medio, porque passport no me permitía borrar o pisar.
