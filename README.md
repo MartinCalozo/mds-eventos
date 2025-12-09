@@ -28,8 +28,8 @@ DB_ROOT_PASSWORD="45zY>3hX|P/"
 PASSPORT_PUBLIC_KEY=/var/www/html/storage/oauth/oauth-public.key
 PASSPORT_PRIVATE_KEY=/var/www/html/storage/oauth/oauth-private.key
 
-PASSPORT_CLIENT_ID=(Mas adelante)
-PASSPORT_CLIENT_SECRET=(Mas adelante)
+PASSPORT_CLIENT_ID=
+PASSPORT_CLIENT_SECRET=
 
 INVITATIONS_API_URL="https://mds-events-main-nfwvz9.laravel.cloud/api/invitations"
 INVITATIONS_API_TOKEN=secret123
@@ -48,8 +48,8 @@ DB_ROOT_PASSWORD="45zY>3hX|P/"
 PASSPORT_PUBLIC_KEY=/var/www/html/storage/testing_oauth/oauth-public.key
 PASSPORT_PRIVATE_KEY=/var/www/html/storage/testing_oauth/oauth-private.key
 
-PASSPORT_CLIENT_ID=(Mas adelante)
-PASSPORT_CLIENT_SECRET=(Mas adelante)
+PASSPORT_CLIENT_ID=
+PASSPORT_CLIENT_SECRET=
 
 INVITATIONS_API_URL="https://mds-events-main-nfwvz9.laravel.cloud/api/invitations"
 INVITATIONS_API_TOKEN=secret123
