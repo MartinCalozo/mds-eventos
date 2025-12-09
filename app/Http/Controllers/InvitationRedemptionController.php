@@ -16,7 +16,7 @@ class InvitationRedemptionController extends Controller
     {
         $hash = $request->validated()['hash'];
 
-        // 1. Verificar si ya fue redimida
+        // Verificar si ya fue redimida
         if (InvitationRedemption::where('hash', $hash)->exists()) {
             Log::warning("Redemption attempt for already redeemed hash", [
                 'hash' => $hash,
@@ -30,7 +30,7 @@ class InvitationRedemptionController extends Controller
             ], 400);
         }
 
-        // 2. Consultar API externa
+        // Consultar API externa
         $result = $service->getInvitationByHash($hash);
 
         if (!$result['success']) {
@@ -46,7 +46,7 @@ class InvitationRedemptionController extends Controller
 
         $inv = $result['data'];
 
-        // 3. Enviar redención a la cola (asíncrono)
+        // Enviar redención a la cola
         ProcessRedemption::dispatch($hash, $inv);
 
         return response()->json([

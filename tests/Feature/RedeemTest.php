@@ -5,7 +5,7 @@ use App\Models\InvitationRedemption;
 use Illuminate\Support\Facades\Http;
 
 beforeEach(function () {
-    // Creamos un evento necesario para event_id
+    // Crea un evento
     $this->event = Event::create([
         'name' => 'Music Fest',
         'date' => '2025-05-10 20:00:00',

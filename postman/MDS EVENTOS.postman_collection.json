@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "e9c500e4-287a-44bf-969f-6a57eab3d02e",
+		"_postman_id": "f446b238-cb7d-4d60-97b7-0fa89f3d1ea2",
 		"name": "MDS EVENTOS",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "13135673"
@@ -19,7 +19,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"name\": \"Admin\",\r\n    \"email\": \"admin2@mds.com\",\r\n    \"password\": \"password\",\r\n    \"password_confirmation\": \"password\"\r\n}",
+					"raw": "{\r\n    \"name\": \"Checker 2\",\r\n    \"email\": \"checker2@mds.com\",\r\n    \"password\": \"password\",\r\n    \"password_confirmation\": \"password\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -27,12 +27,10 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:8000/api/auth/register-checker",
-					"protocol": "http",
+					"raw": "{{baseURL}}/api/auth/register-checker",
 					"host": [
-						"localhost"
+						"{{baseURL}}"
 					],
-					"port": "8000",
 					"path": [
 						"api",
 						"auth",
@@ -58,7 +56,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "// {\r\n//   \"email\": \"checker@mds.com\",\r\n//   \"password\": \"password\"\r\n// }\r\n{\r\n  \"email\": \"admin@mds.com\",\r\n  \"password\": \"password\"\r\n}\r\n",
+					"raw": "// {\r\n//   \"email\": \"checker@mds.com\",\r\n//   \"password\": \"password\"\r\n// }\r\n{\r\n  \"email\": \"admin@mds.com\",\r\n  \"password\": \"password\"\r\n}\r\n// {\r\n//   \"email\": \"admin2@mds.com\",\r\n//   \"password\": \"password\"\r\n// }\r\n",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -66,12 +64,10 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:8000/api/auth/login",
-					"protocol": "http",
+					"raw": "{{baseURL}}/api/auth/login",
 					"host": [
-						"localhost"
+						"{{baseURL}}"
 					],
-					"port": "8000",
 					"path": [
 						"api",
 						"auth",
@@ -102,12 +98,10 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:8000/api/auth/logout",
-					"protocol": "http",
+					"raw": "{{baseURL}}/api/auth/logout",
 					"host": [
-						"localhost"
+						"{{baseURL}}"
 					],
-					"port": "8000",
 					"path": [
 						"api",
 						"auth",
@@ -129,12 +123,10 @@
 					}
 				],
 				"url": {
-					"raw": "http://localhost:8000/api/checker/test",
-					"protocol": "http",
+					"raw": "{{baseURL}}/api/checker/test",
 					"host": [
-						"localhost"
+						"{{baseURL}}"
 					],
-					"port": "8000",
 					"path": [
 						"api",
 						"checker",
@@ -156,12 +148,10 @@
 					}
 				],
 				"url": {
-					"raw": "http://localhost:8000/api/admin/test",
-					"protocol": "http",
+					"raw": "{{baseURL}}/api/admin/test",
 					"host": [
-						"localhost"
+						"{{baseURL}}"
 					],
-					"port": "8000",
 					"path": [
 						"api",
 						"admin",
@@ -172,17 +162,15 @@
 			"response": []
 		},
 		{
-			"name": "Test Invitacion",
+			"name": "Obtener Datos de Invitación (requiere Bearer SECRET)",
 			"request": {
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:8000/api/invitations/123",
-					"protocol": "http",
+					"raw": "{{baseURL}}/api/invitations/123",
 					"host": [
-						"localhost"
+						"{{baseURL}}"
 					],
-					"port": "8000",
 					"path": [
 						"api",
 						"invitations",
@@ -193,10 +181,38 @@
 			"response": []
 		},
 		{
-			"name": "Invitaciones",
+			"name": "Obtener Invitación Desde Local",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseURL}}/api/invitations/d1i55g",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"api",
+						"invitations",
+						"d1i55g"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Redimir Invitación",
 			"request": {
 				"method": "POST",
-				"header": [],
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "",
+						"type": "text"
+					}
+				],
 				"body": {
 					"mode": "raw",
 					"raw": "{\r\n    \"hash\": \"c0h44g\"\r\n    // \"hash\": \"$H/DSV\"\r\n    // \"hash\": 5\r\n}",
@@ -207,12 +223,10 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:8000/api/redeem",
-					"protocol": "http",
+					"raw": "{{baseURL}}/api/redeem",
 					"host": [
-						"localhost"
+						"{{baseURL}}"
 					],
-					"port": "8000",
 					"path": [
 						"api",
 						"redeem"
@@ -222,7 +236,7 @@
 			"response": []
 		},
 		{
-			"name": "Validar Ticket",
+			"name": "Validar Ticket (requiere Bearer CHECKER)",
 			"request": {
 				"method": "POST",
 				"header": [
@@ -242,12 +256,10 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:8000/api/tickets/378501fb-da4d-49ea-8333-3e45b9b63c3e/validate",
-					"protocol": "http",
+					"raw": "{{baseURL}}/api/tickets/378501fb-da4d-49ea-8333-3e45b9b63c3e/validate",
 					"host": [
-						"localhost"
+						"{{baseURL}}"
 					],
-					"port": "8000",
 					"path": [
 						"api",
 						"tickets",
@@ -259,7 +271,7 @@
 			"response": []
 		},
 		{
-			"name": "Admin Event Paginate",
+			"name": "Listar Tickets Usados por Evento (requiere Bearer ADMIN)",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
 			},
@@ -277,12 +289,10 @@
 					"raw": "{\r\n    \"hash\": \"a8f22d\"\r\n}"
 				},
 				"url": {
-					"raw": "http://localhost:8000/api/admin/events/2/tickets-used",
-					"protocol": "http",
+					"raw": "{{baseURL}}/api/admin/events/2/tickets-used",
 					"host": [
-						"localhost"
+						"{{baseURL}}"
 					],
-					"port": "8000",
 					"path": [
 						"api",
 						"admin",
@@ -295,7 +305,7 @@
 			"response": []
 		},
 		{
-			"name": "Admin Redemptions Paginate",
+			"name": "Filtrar Redenciones (requiere Bearer ADMIN)",
 			"request": {
 				"method": "GET",
 				"header": [
@@ -306,12 +316,10 @@
 					}
 				],
 				"url": {
-					"raw": "http://localhost:8000/api/admin/redemptions?event=2",
-					"protocol": "http",
+					"raw": "{{baseURL}}/api/admin/redemptions?event=2",
 					"host": [
-						"localhost"
+						"{{baseURL}}"
 					],
-					"port": "8000",
 					"path": [
 						"api",
 						"admin",
@@ -326,6 +334,13 @@
 				}
 			},
 			"response": []
+		}
+	],
+	"variable": [
+		{
+			"key": "baseURL",
+			"value": "",
+			"type": "default"
 		}
 	]
 }

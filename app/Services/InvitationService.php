@@ -49,7 +49,7 @@ class InvitationService
                 ];
             }
 
-            if (!$data || !isset($data['hash'])) {
+            if (!$data || !isset($data['invitation_id'])) {
                 return $this->fallbackOrError("Invalid invitation data received");
             }
 

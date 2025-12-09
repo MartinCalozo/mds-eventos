@@ -10,7 +10,7 @@ class TicketValidationController extends Controller
 {
     public function validateTicket(Request $request, string $code)
     {
-        // Si no hay usuario autenticado → 401
+        // Si no hay usuario autenticado
         if (!$request->user()) {
             return response()->json([
                 'success' => false,
@@ -26,7 +26,7 @@ class TicketValidationController extends Controller
         }
 
 
-        // Buscar ticket + relaciones
+        // Buscar ticket
         $ticket = Ticket::where('code', $code)
             ->with('redemption.event')
             ->first();
@@ -38,7 +38,7 @@ class TicketValidationController extends Controller
             ], 404);
         }
 
-        // Ticket ya usado → error
+        // Ticket ya usado
         if ($ticket->used) {
             return response()->json([
                 'success' => false,

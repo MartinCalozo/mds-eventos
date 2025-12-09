@@ -3,9 +3,7 @@
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 
-/**
- * 1) Usuario NO autenticado → debe dar 401
- */
+// Usuario NO autenticado
 it('blocks unauthenticated user with 401', function () {
 
     $response = $this->getJson('/api/checker/test'); // ruta real que usa role:checker
@@ -17,9 +15,7 @@ it('blocks unauthenticated user with 401', function () {
              ]);
 });
 
-/**
- * 2) Usuario autenticado pero con rol incorrecto → debe dar 403
- */
+// Usuario autenticado pero con rol incorrecto
 it('blocks user with wrong role and returns 403', function () {
 
     $admin = User::factory()->create([
@@ -37,9 +33,7 @@ it('blocks user with wrong role and returns 403', function () {
              ]);
 });
 
-/**
- * 3) Usuario con rol correcto → 200
- */
+// Usuario con rol correcto
 it('allows user with correct role', function () {
 
     $checker = User::factory()->create([

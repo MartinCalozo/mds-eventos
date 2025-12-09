@@ -36,6 +36,7 @@ services:
     ports:
       - "3307:3306"
     volumes:
+      - ./docker/mysql/init.sql:/docker-entrypoint-initdb.d/init.sql
       - mysql_data:/var/lib/mysql
     networks:
       - mds_network
@@ -53,8 +54,6 @@ services:
     restart: unless-stopped
     environment:
       PMA_HOST: mysql
-      PMA_USER: ${DB_USERNAME}
-      PMA_PASSWORD: ${DB_PASSWORD}
     ports:
       - "8080:80"
     networks:
@@ -72,6 +71,21 @@ services:
       APP_ENV: testing
     volumes:
       - ./:/var/www/html
+    networks:
+      - mds_network
+  
+  queue:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: mds_queue
+    restart: unless-stopped
+    command: php artisan queue:work --tries=3 --timeout=30
+    volumes:
+      - ./:/var/www/html
+    depends_on:
+      - app
+      - mysql
     networks:
       - mds_network
 

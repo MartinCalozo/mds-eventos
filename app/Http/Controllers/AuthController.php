@@ -40,7 +40,6 @@ class AuthController extends Controller
                 ], 201);
             }
 
-            // 🔥 GENERAR TOKEN USANDO PASSWORD GRANT
             $tokenRequest = Request::create('/oauth/token', 'POST', [
                 'grant_type'    => 'password',
                 'client_id'     => env('PASSPORT_CLIENT_ID'),

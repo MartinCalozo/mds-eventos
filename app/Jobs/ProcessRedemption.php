@@ -40,7 +40,7 @@ class ProcessRedemption implements ShouldQueue
             'sector' => $this->inv['sector'] ?? null
         ]);
 
-        // Crear redención
+        // Crear redencion
         $red = InvitationRedemption::create([
             'invitation_id' => $this->inv['invitation_id'],
             'hash'          => $this->hash,

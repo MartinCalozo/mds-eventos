@@ -11,7 +11,6 @@ class InitialDataSeeder extends Seeder
 {
     public function run()
     {
-        // Crear un administrador
         User::create([
             'name' => 'Admin',
             'email' => 'admin@mds.com',
@@ -19,19 +18,23 @@ class InitialDataSeeder extends Seeder
             'role' => 'admin',
         ]);
 
-        // Crear un checker
         User::create([
-            'name' => 'Juan Checker',
+            'name' => 'Checker1',
             'email' => 'checker@mds.com',
             'password' => Hash::make('password'),
             'role' => 'checker',
         ]);
 
-        // Crear un evento de ejemplo
         Event::create([
-            'name' => 'Festival de Música Rosario',
-            'date' => '2026-12-10 21:00:00',
+            'name' => 'Music Fest',
+            'date' => now()->addDays(7),
             'sector' => 'VIP',
+        ]);
+
+        Event::create([
+            'name' => 'Food Festival',
+            'date' => now()->addDays(10),
+            'sector' => 'General',
         ]);
     }
 }

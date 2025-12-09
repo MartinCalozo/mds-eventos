@@ -1,0 +1,136 @@
+## Requisitos
+- PHP 8.3+
+- MySQL 8
+- Composer
+- Laravel 12
+- Laravel Passport
+- Docker y Docker Compose
+- Pest
+
+## Clonar Repositorios
+git clone https://github.com/MartinCalozo/mds-eventos.git
+cd mds-eventos
+
+## Copiar el archivo .env y poner sus variables correspondientes
+cp .env.example .env
+cp .env.testing.example .env.testing
+php artisan key:generate
+
+## Modificar entornos
+### Reemplazar en .env
+DB_CONNECTION=mysql
+DB_HOST=mysql
+DB_PORT=3306
+DB_DATABASE=mds-events
+DB_USERNAME=mds_user
+DB_PASSWORD=pass
+DB_ROOT_PASSWORD="45zY>3hX|P/"
+
+PASSPORT_PUBLIC_KEY=/var/www/html/storage/oauth/oauth-public.key
+PASSPORT_PRIVATE_KEY=/var/www/html/storage/oauth/oauth-private.key
+
+PASSPORT_CLIENT_ID=(Mas adelante)
+PASSPORT_CLIENT_SECRET=(Mas adelante)
+
+INVITATIONS_API_URL="https://mds-events-main-nfwvz9.laravel.cloud/api/invitations"
+INVITATIONS_API_TOKEN=secret123
+INVITATIONS_API_FALLBACK=false
+
+### Reemplazar en .env.testing
+DB_CONNECTION=mysql
+DB_HOST=mysql
+DB_PORT=3306
+DB_DATABASE=mds_events_test
+DB_USERNAME=mds_user
+DB_PASSWORD=pass
+DB_ROOT_PASSWORD="45zY>3hX|P/"
+
+PASSPORT_PUBLIC_KEY=/var/www/html/storage/testing_oauth/oauth-public.key
+PASSPORT_PRIVATE_KEY=/var/www/html/storage/testing_oauth/oauth-private.key
+
+PASSPORT_CLIENT_ID=(Mas adelante)
+PASSPORT_CLIENT_SECRET=(Mas adelante)
+
+INVITATIONS_API_URL="https://mds-events-main-nfwvz9.laravel.cloud/api/invitations"
+INVITATIONS_API_TOKEN=secret123
+INVITATIONS_API_FALLBACK=true
+
+## Levantar los servicios de Docker
+docker compose up -d --build
+
+
+## Instalacion, Migracion y Passport
+composer require laravel/passport
+
+docker exec -it mds_app bash
+    php artisan key:generate
+    php artisan migrate
+    php artisan passport:install
+        [yes]
+        [yes]
+        Cuando pregunte: Which user provider should this client use to retrieve users? hay que poner "users" (sin comillas)
+
+    php artisan passport:client --password
+        Client
+        users
+
+        Passport devuelve 
+        Client ID ........................................................................................... XXXXXXXXXXXXXXXXXXXXXXXXXX
+        Client Secret ........................................................................................... XXXXXXXXXXXXXXXXXXXXXXXXXX
+
+        Copiar y Pegarlo en el .env en las variables con los siguientes nombre
+        PASSPORT_CLIENT_ID
+        PASSPORT_CLIENT_SECRET
+    exit
+
+## Repetir proceso en mds_test
+docker exec -it mds_test bash
+    php artisan key:generate
+    php artisan migrate
+
+    php artisan passport:client --password
+        ClientTest
+        users
+
+        Passport devuelve 
+        Client ID ........................................................................................... XXXXXXXXXXXXXXXXXXXXXXXXXX
+        Client Secret ........................................................................................... XXXXXXXXXXXXXXXXXXXXXXXXXX
+
+        Copiar y Pegarlo en el .env.testing en las variables con los siguientes nombre
+        PASSPORT_CLIENT_ID
+        PASSPORT_CLIENT_SECRET
+
+    php artisan db:seed
+    exit
+
+## Postman
+Abrir Postman, arriba a la izquierda al lado del boton "new" hay otro que es "import"
+Clickeo "import"
+Arrastro el archivo que se encuentra en la carpeta postman y lo importo
+
+Cuando veas en una url "{{baseURL}}" apoyá el mouse arriba y pegá la siguiente línea "http://localhost:8000"(sin comillas)
+
+En el Login te devuelve un access_token
+En el caso de loguearte con un checker.
+Ir al que dice "requiere Bearer CHECKER" entre los títulos y poner en header (abajo de la url)
+Key = "Authorization" y Value = "Bearer {access_token}".
+Hacer lo mismo en los que dice "requiere Bearer ADMIN" pero tomando el access_token del usuario admin, ejemplo para el login "admin@mds.com".
+Y hacer lo mismo "requiere Bearer SECRET" y poner value = "Bearer secret123"
+
+Para el "Validar Ticket" hay que buscar en la base de datos (http://localhost:8080/)
+usuario: mds_user
+password: pass
+Ir a la base de datos mds-events, a la tabla tickets y copiar y pegar un "code", ese se pone en la url /api/tickets/{code}/validate
+
+## Job
+Está corriendo contantemente en un contenedor de docker llamado mds_queue
+
+## Testear
+docker exec -it mds_test bash
+    php artisan test --coverage
+    exit
+
+
+# Problemas
+Si tienen algún problema con passport por favor enviarme mail (martincalozo@gmail.com) o contactarse conmigo por otro medio, porque passport no me permitía borrar o pisar.
+Entonces hay que eliminar de manera manual las tablas en la base de datos, las migraciones en el código y despues volver a correr los comando.

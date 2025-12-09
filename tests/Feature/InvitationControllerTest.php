@@ -3,9 +3,7 @@
 use App\Services\InvitationService;
 use Mockery\MockInterface;
 
-/**
- * 10.x – Test para InvitationController (endpoint público)
- */
+// Test para InvitationController (endpoint público)
 it('returns invitation data from the controller', function () {
 
     // Simulamos el servicio externo
@@ -22,10 +20,8 @@ it('returns invitation data from the controller', function () {
             ]);
     });
 
-    // Ejecutamos el endpoint
     $response = $this->getJson('/api/invitations/abc123');
 
-    // Afirmaciones
     $response->assertStatus(200)
              ->assertJson([
                  'success' => true,
@@ -36,9 +32,7 @@ it('returns invitation data from the controller', function () {
              ]);
 });
 
-/**
- * Test: cuando el servicio devuelve error
- */
+// Cuando el servicio devuelve error
 it('returns error when invitation is not found', function () {
 
     $this->mock(InvitationService::class, function (MockInterface $mock) {
@@ -53,7 +47,7 @@ it('returns error when invitation is not found', function () {
 
     $response = $this->getJson('/api/invitations/wrong-hash');
 
-    $response->assertStatus(200) // El controller SIEMPRE responde 200 según tu implementación
+    $response->assertStatus(200)
              ->assertJson([
                  'success' => false,
                  'error'   => 'Invitation not found'

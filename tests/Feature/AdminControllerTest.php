@@ -9,9 +9,7 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 
 uses(RefreshDatabase::class);
 
-/**
- * Helper: Crear un usuario admin logueado
- */
+// Crear un usuario admin logueado
 function actingAsAdmin() {
     $admin = User::factory()->create([
         'role' => 'admin',
@@ -21,9 +19,7 @@ function actingAsAdmin() {
     return test()->actingAs($admin, 'api');
 }
 
-/**
- * 10.5 - Test: ticketsUsed()
- */
+// Test: ticketsUsed()
 it('returns used tickets for an event', function () {
 
     actingAsAdmin();
@@ -74,9 +70,7 @@ it('returns used tickets for an event', function () {
     expect($response->json('data.data.0.tickets'))->toHaveCount(1);
 });
 
-/**
- * 10.5 - Test: filtrar por fecha en ticketsUsed()
- */
+// Test: filtrar por fecha en ticketsUsed()
 it('filters used tickets by date', function () {
 
     actingAsAdmin();
@@ -100,9 +94,7 @@ it('filters used tickets by date', function () {
     expect($response->json('data.data'))->toHaveCount(1);
 });
 
-/**
- * 10.5 - Test: redemptions() listado general
- */
+// Test: redemptions() listado general
 it('lists redemptions with filters', function () {
 
     actingAsAdmin();
