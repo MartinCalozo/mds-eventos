@@ -36,6 +36,7 @@ INVITATIONS_API_TOKEN=secret123
 INVITATIONS_API_FALLBACK=false
 
 ### Reemplazar en .env.testing
+APP_ENV=testing
 DB_CONNECTION=mysql
 DB_HOST=mysql
 DB_PORT=3306
